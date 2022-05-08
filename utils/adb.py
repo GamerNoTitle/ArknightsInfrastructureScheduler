@@ -1,5 +1,6 @@
 import os
 import sys
+from tempfile import TemporaryFile
 
 if sys.platform == 'win32':
     adb = './adb/adb.exe'
@@ -28,3 +29,22 @@ def back():
         os.system(f'{command_head}input keyevent 3')
     except:
         raise RuntimeWarning('This back operation is failed to push to te device.')
+
+def connect(address: str, port: int):
+    try:
+        os.system(f'{adb} connect {address}:{port}')
+    except:
+        raise RuntimeWarning('Cannot connect to the device.')
+
+def restart():
+    try:
+        os.system(f'{adb} kill-server')
+        os.system(f'{adb} start-server')
+    except:
+        raise RuntimeWarning('Cannot restart the adb server.')
+
+def devices():
+    try:
+        os.system(f'{adb} devices')
+    except:
+        raise RuntimeWarning('Cannot fetch device info.')
