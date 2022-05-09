@@ -63,3 +63,7 @@ hint: See above for output from the failure.
 提取码：ztyo
 ```
 装载镜像后直接安装就好了。
+
+## Credit
+
+- PaddleOcr https://paddlepaddle.org.cn
