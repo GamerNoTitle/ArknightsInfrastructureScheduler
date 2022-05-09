@@ -6,3 +6,4 @@ config.json
 *.png
 /Sets/
 /adb/
+*.db
