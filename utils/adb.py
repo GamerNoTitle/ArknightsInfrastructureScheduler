@@ -3,9 +3,9 @@ import sys
 from tempfile import TemporaryFile
 
 if sys.platform == 'win32':
-    adb = './adb/adb.exe'
+    adb = '".\\adb\\platform-tools\\adb.exe"'
 else:
-    adb = './adb/adb'
+    adb = './adb/platform-tools/adb'
 
 command_head = f'{adb} shell '
 
@@ -48,3 +48,10 @@ def devices():
         os.system(f'{adb} devices')
     except:
         raise RuntimeWarning('Cannot fetch device info.')
+
+def screencapture():
+    commands = f'''{adb} shell screencap -p /sdcard/temp.png
+    {adb} pull /sdcard/temp.png
+    {adb} shell rm /sdcard/temp.png'''
+    for i in commands.split('\n'):
+        os.system(f'{i}')
