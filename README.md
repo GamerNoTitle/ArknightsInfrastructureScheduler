@@ -56,3 +56,10 @@ error: legacy-install-failure
 note: This is an issue with the package mentioned above, not pip.
 hint: See above for output from the failure.
 ```
+
+安装VS C++ Build Tools，因为这个安装比较麻烦，所以建议直接下载我这个
+```
+链接：https://pan.baidu.com/s/1g5SEmiv2IQuZP5b5OJcjIw?pwd=ztyo 
+提取码：ztyo
+```
+装载镜像后直接安装就好了。
