@@ -9,9 +9,11 @@ else:
 
 command_head = f'{adb} shell '
 
-def touch(pos):
-    pos_x, pos_y = pos[0], pos[1]
+def touch(result_set):
+    ([x1, y1], [x2, y2], string) = (result_set[0][0], result_set[0][2], result_set[1][0])
+    pos_x, pos_y = (x1+x2)/2, (y1+y2)/2
     try:
+        print(f'Try to touch {pos_x} {pos_y}, string: {string}')
         os.system(f'{command_head}input tap {pos_x} {pos_y}')
     except:
         raise RuntimeWarning('This tap operation is failed to push to the device.')
