@@ -3,7 +3,7 @@ import threading as t
 import json
 import time
 
-from utils import adb
+from utils.adb import device
 from utils.Initalize import Initalize
 from utils.Ocr import recongnize
 from utils.PropertiesParser import parse
@@ -26,16 +26,14 @@ if __name__ == '__main__':
     if config['bluestacks']['enable']:
         port = int(parse(config['bluestacks']['conf']).get(
             'bst.instance.Nougat64.status.adb_port', '5555').replace('"', ''))
-        adb.restart()
-        adb.connect('127.0.0.1', port)
+        emulator = device('127.0.0.1', port)
     else:
         address = config['address']
         port = config['port']
-        adb.restart()
-        adb.connect(address, port)
+        emulator = device(address,port)
     # Connect Completed
 
-    file = adb.screencapture()
+    file = emulator.screencapture()
     try:
         result = recongnize(file)
         print(result)
