@@ -2,6 +2,8 @@ import os
 import threading as t
 import json
 import time
+import tempfile as tf
+
 
 from utils.adb import device
 from utils.Initalize import Initalize
@@ -21,19 +23,25 @@ if __name__ == '__main__':
         DownloadProgress = t.Thread(target=Initalize, name='Initalize')
         DownloadProgress.run()
         DownloadProgress.join()
+    temp_dir = 'cache'
 
     # Connect to the device
     if config['bluestacks']['enable']:
         port = int(parse(config['bluestacks']['conf']).get(
             'bst.instance.Nougat64.status.adb_port', '5555').replace('"', ''))
         emulator = device('127.0.0.1', port)
+        emulator.restart()
+        emulator.connect(emulator.address,emulator.port)
     else:
         address = config['address']
         port = config['port']
         emulator = device(address,port)
+        emulator.restart()
+        emulator.connect(emulator.address,emulator.port)
     # Connect Completed
 
-    file = emulator.screencapture()
+    file = emulator.screencapture(temp_dir)
+    file = 'cache/1652194221.png'
     try:
         result = recongnize(file)
         print(result)
@@ -45,4 +53,4 @@ if __name__ == '__main__':
     #     [[1046.0, 250.0], [1174.0, 250.0], [1174.0, 278.0], [1046.0, 278.0]], ('biubiu加速器', 0.9443848729133606)], [[[1354.0, 252.0], [1474.0, 252.0], [1474.0, 274.0], [1354.0, 274.0]], ('哔哩哔哩HD', 0.7773469090461731)], [[[1636.0, 248.0], [1790.0, 250.0], [1790.0, 278.0], [1636.0, 276.0]], ('Packet Capture', 0.948020339012146)], [[[464.0, 395.0], [550.0, 395.0], [550.0, 441.0], [464.0, 441.0]], ('bilibili', 0.8801730871200562)], [[[158.0, 478.0], [250.0, 478.0], [250.0, 508.0], [158.0, 508.0]], ('明日计划', 0.9971569776535034)], [[[462.0, 478.0], [554.0, 478.0], [554.0, 506.0], [462.0, 506.0]], ('哔哩哔哩', 0.7854729890823364)], [[[770.0, 478.0], [846.0, 478.0], [846.0, 508.0], [770.0, 508.0]], ('云·原神', 0.9809289574623108)], [[[1042.0, 476.0], [1180.0, 476.0], [1180.0, 510.0], [1042.0, 510.0]], ('明日方舟速通', 0.9849907755851746)]]
     # for i in result:
     #     time.sleep(5)
-    #     adb.touch(i)
+    #     device.touch(result_set = i)
