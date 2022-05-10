@@ -51,7 +51,8 @@ def devices():
 
 def screencapture():
     commands = f'''{adb} shell screencap -p /sdcard/temp.png
-    {adb} pull /sdcard/temp.png
+    {adb} pull /sdcard/temp.png ./temp.png
     {adb} shell rm /sdcard/temp.png'''
     for i in commands.split('\n'):
         os.system(f'{i}')
+    return f'temp.png'

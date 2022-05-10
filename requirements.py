@@ -62,5 +62,7 @@ if sys.platform == 'win32':
         os.system(f'{args.execute} -m pip install -r requirements.txt')
     else:
         os.system(f'{python} -m pip install -r requirements.txt')
-
-print('Installation completed! After this installation, you still need to install cuda from NVIDIA website: https://developer.nvidia.com/cuda-downloads')
+if args.gpu:
+    print('Installation completed! After this installation, you still need to install cuda from NVIDIA website: https://developer.nvidia.com/cuda-downloads')
+else:
+    print('Installation completed!')
