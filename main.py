@@ -41,7 +41,6 @@ if __name__ == '__main__':
     # Connect Completed
 
     file = emulator.screencapture(temp_dir)
-    file = 'cache/1652194221.png'
     try:
         result = recongnize(file)
         print(result)
