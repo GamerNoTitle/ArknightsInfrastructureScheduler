@@ -9,33 +9,39 @@ else:
 
 command_head = f'{adb} shell '
 
+
 class device():
     def __init__(self, address, port):
         self.address = address
         self.port = port
 
     def touch(self, result_set):
-        ([x1, y1], [x2, y2], string) = (result_set[0][0], result_set[0][2], result_set[1][0])
+        ([x1, y1], [x2, y2], string) = (result_set[0]
+                                        [0], result_set[0][2], result_set[1][0])
         pos_x, pos_y = (x1+x2)/2, (y1+y2)/2
         try:
             print(f'Try to touch {pos_x} {pos_y}, string: {string}')
             os.system(f'{command_head}input tap {pos_x} {pos_y}')
         except:
-            raise RuntimeWarning('This tap operation is failed to push to the device.')
+            raise RuntimeWarning(
+                'This tap operation is failed to push to the device.')
 
     def slide(self, start, end):
         start_x, start_y = start[0], start[1]
         end_x, end_y = end[0], end[1]
         try:
-            os.system(f'{command_head}input swipe {start_x} {start_y} {end_x} {end_y}')
+            os.system(
+                f'{command_head}input swipe {start_x} {start_y} {end_x} {end_y}')
         except:
-            raise RuntimeWarning('This slide operation is failed to push to the device.')
+            raise RuntimeWarning(
+                'This slide operation is failed to push to the device.')
 
     def back(self):
         try:
             os.system(f'{command_head}input keyevent 3')
         except:
-            raise RuntimeWarning('This back operation is failed to push to te device.')
+            raise RuntimeWarning(
+                'This back operation is failed to push to te device.')
 
     def connect(self, address: str, port: int):
         try:

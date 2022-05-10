@@ -31,13 +31,13 @@ if __name__ == '__main__':
             'bst.instance.Nougat64.status.adb_port', '5555').replace('"', ''))
         emulator = device('127.0.0.1', port)
         emulator.restart()
-        emulator.connect(emulator.address,emulator.port)
+        emulator.connect(emulator.address, emulator.port)
     else:
         address = config['address']
         port = config['port']
-        emulator = device(address,port)
+        emulator = device(address, port)
         emulator.restart()
-        emulator.connect(emulator.address,emulator.port)
+        emulator.connect(emulator.address, emulator.port)
     # Connect Completed
 
     file = emulator.screencapture(temp_dir)

@@ -1,6 +1,7 @@
 import requests as r
 from tqdm import tqdm
 
+
 def download(url: str, fname: str, headers: dict):
     # 用流stream的方式获取url的数据
     resp = r.get(url, stream=True, headers=headers)

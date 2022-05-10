@@ -17,7 +17,7 @@ def recongnize(path):
     txts = [line[1][0] for line in result]
     scores = [line[1][1] for line in result]
     im_show = draw_ocr(image, boxes, txts, scores,
-                    font_path='./fonts/simfang.ttf')
+                       font_path='./fonts/simfang.ttf')
     im_show = Image.fromarray(im_show)
     im_show.save(f'{path.replace(".png","")}-result.png')
     return result
