@@ -39,7 +39,7 @@ if __name__ == '__main__':
         emulator.restart()
         emulator.connect(emulator.address, emulator.port)
     # Connect Completed
-
+    
     file = emulator.screencapture(temp_dir)
     try:
         result = recongnize(file)
