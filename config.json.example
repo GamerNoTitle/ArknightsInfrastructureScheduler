@@ -4,5 +4,6 @@
     "bluestacks": {
         "enable" : false,
         "conf": "bluestack.conf"
-    }
+    },
+    "log_level": "INFO"
 }

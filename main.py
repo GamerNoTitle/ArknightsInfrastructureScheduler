@@ -2,14 +2,15 @@ import os
 import threading as t
 import json
 import time
-import tempfile as tf
 
 
 from utils.adb import device
 from utils.Initalize import Initalize
 from utils.Ocr import recongnize
 from utils.PropertiesParser import parse
+from utils.Logger import logger
 
+from tasks import Infrastructure
 
 class RunningError(Exception):
     pass
@@ -19,6 +20,13 @@ with open('./config.json', 'rt') as f:
     config = json.loads(f.read())
 
 if __name__ == '__main__':
+    t = time.localtime(time.time())
+    mo = str(t.tm_mon) if len(str(t.tm_mon)) == 2 else '0' + str(t.tm_mon)
+    day = str(t.tm_mday) if len(str(t.tm_mday)) == 2 else '0' + str(t.tm_mday)
+    hour = str(t.tm_hour) if len(str(t.tm_hour)) == 2 else '0' + str(t.tm_hour)
+    minute = str(t.tm_min) if len(str(t.tm_min)) == 2 else '0' + str(t.tm_min)
+    log_file = f'./logs/{t.tm_year}-{mo}-{day}-{hour}-{minute}.log'
+    log = logger(config['log_level'].lower(), log_file) if config['log_level'].upper() in ['DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL'] else 'info'
     if not os.path.exists('./adb'):
         DownloadProgress = t.Thread(target=Initalize, name='Initalize')
         DownloadProgress.run()
@@ -39,7 +47,7 @@ if __name__ == '__main__':
         emulator.restart()
         emulator.connect(emulator.address, emulator.port)
     # Connect Completed
-    
+
     file = emulator.screencapture(temp_dir)
     try:
         result = recongnize(file)
@@ -53,3 +61,6 @@ if __name__ == '__main__':
     # for i in result:
     #     time.sleep(5)
     #     device.touch(result_set = i)
+    tasks = [
+        Infrastructure.run(emulator, recongnize, temp_dir)
+    ]
