@@ -5,7 +5,7 @@ import tempfile
 
 class Properties:
 
-    def __init__(self, file_name):
+    def __init__(self, file_name, logger):
         self.file_name = file_name
         self.properties = {}
         try:
@@ -16,6 +16,7 @@ class Properties:
                     strs = line.split('=', 1)
                     self.properties[strs[0].strip()] = strs[1].strip()
         except Exception as e:
+            logger.error(f'An error occurred when parsing {file_name}: {e}')
             raise e
         else:
             fopen.close()
@@ -33,8 +34,8 @@ class Properties:
         replace_property(self.file_name, key + '=.*', key + '=' + value, True)
 
 
-def parse(file_name):
-    return Properties(file_name)
+def parse(file_name, logger):
+    return Properties(file_name, logger)
 
 
 def replace_property(file_name, from_regex, to_str, append_on_not_exists=True):

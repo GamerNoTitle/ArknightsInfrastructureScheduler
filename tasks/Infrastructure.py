@@ -1,4 +1,4 @@
-def EnterInfrastructure(device, recongnize: function, temp_dir: str):
+def EnterInfrastructure(device, recongnize, temp_dir: str):
     # 进入基建
     InInfrastructure = False
     while not InInfrastructure:
@@ -13,9 +13,9 @@ def EnterInfrastructure(device, recongnize: function, temp_dir: str):
                 print('无法找到点击目标：基建，重新截取并识别中……')
                 InInfrastructure = False
     
-def RoomRecongnize(device, recongnize: function, temp_dir: str):
+def RoomRecongnize(device, recongnize, temp_dir: str):
     Rooms = ['贸易站', '制造站', '发电站', '宿舍', '控制中枢', '会客室', '加工站', '办公室', '训练室']
     HomeButton = ['进驻总览', 'NOTIFICTION']
 
-def run(device, recongnize: function, temp_dir: str):
+def run(device, recongnize, temp_dir: str):
     EnterInfrastructure(device, recongnize, temp_dir)

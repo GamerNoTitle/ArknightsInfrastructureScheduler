@@ -5,7 +5,6 @@ from paddleocr import PaddleOCR, draw_ocr
 # need to run only once to download and load model into memory
 ocr = PaddleOCR(use_angle_cls=True, lang="ch")
 
-
 def recongnize(path):
     img_path = path
     result = ocr.ocr(img_path, cls=True)
