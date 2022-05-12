@@ -2,6 +2,7 @@ import os
 import threading as t
 import json
 import time
+from pprint import pformat
 
 
 from utils.adb import device
@@ -28,7 +29,7 @@ if __name__ == '__main__':
     log_file = f'./logs/{t.tm_year}-{mo}-{day}-{hour}-{minute}.log'
     log = logger(config['log_level'].upper(), log_file) if config['log_level'].upper() in ['DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL'] else 'INFO'
     if not os.path.exists('./adb'):
-        DownloadProgress = t.Thread(target=Initalize, name='Initalize')
+        DownloadProgress = t.Thread(target=Initalize, name='Initalize', arg=(log,))
         DownloadProgress.run()
         DownloadProgress.join()
     temp_dir = 'cache'
@@ -50,7 +51,7 @@ if __name__ == '__main__':
 
     file = emulator.screencapture(temp_dir)
     try:
-        result = recongnize(file)
+        result = recongnize(file, logger)
         log.info(result)
     except FileNotFoundError:
         raise RunningError('Could not find the screen captured picture.')
