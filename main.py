@@ -13,6 +13,7 @@ from utils.Logger import logger
 
 from tasks import Infrastructure
 
+
 class RunningError(Exception):
     pass
 
@@ -27,9 +28,11 @@ if __name__ == '__main__':
     hour = str(t.tm_hour) if len(str(t.tm_hour)) == 2 else '0' + str(t.tm_hour)
     minute = str(t.tm_min) if len(str(t.tm_min)) == 2 else '0' + str(t.tm_min)
     log_file = f'./logs/{t.tm_year}-{mo}-{day}-{hour}-{minute}.log'
-    log = logger(config['log_level'].upper(), log_file) if config['log_level'].upper() in ['DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL'] else 'INFO'
-    if not os.path.exists('./adb'):
-        DownloadProgress = threading.Thread(target=Initalize, name='Initalize', args=(log,))
+    log = logger(config['log_level'].upper(), log_file) if config['log_level'].upper(
+    ) in ['DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL'] else 'INFO'
+    if not os.path.exists('./adb/platform-tools'):
+        DownloadProgress = threading.Thread(
+            target=Initalize, name='Initalize', args=(log,))
         DownloadProgress.run()
     temp_dir = 'cache'
 
@@ -50,7 +53,7 @@ if __name__ == '__main__':
 
     file = emulator.screencapture(temp_dir)
     try:
-        result = recongnize(file, logger)
+        result = recongnize(file, log)
         log.info(result)
     except FileNotFoundError:
         log.warn('Could not find the screen captured picture.')

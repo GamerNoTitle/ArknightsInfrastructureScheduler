@@ -22,7 +22,8 @@ class device():
         pos_x, pos_y = (x1+x2)/2, (y1+y2)/2
         try:
             self.logger.info(f'Try to touch {pos_x} {pos_y}, string: {string}')
-            self.logger.info(os.popen(f'{command_head}input tap {pos_x} {pos_y}').read())
+            self.logger.info(
+                os.popen(f'{command_head}input tap {pos_x} {pos_y}').read())
         except:
             raise RuntimeWarning(
                 'This tap operation is failed to push to the device.')
@@ -39,14 +40,16 @@ class device():
 
     def back(self):
         try:
-            self.logger.info(os.popen(f'{command_head}input keyevent 3').read())
+            self.logger.info(
+                os.popen(f'{command_head}input keyevent 3').read())
         except:
             raise RuntimeWarning(
                 'This back operation is failed to push to te device.')
 
     def connect(self, address: str, port: int):
         try:
-            self.logger.info(os.popen(f'{adb} connect {address}:{port}').read())
+            self.logger.info(
+                os.popen(f'{adb} connect {address}:{port}').read())
         except:
             raise RuntimeWarning('Cannot connect to the device.')
 
