@@ -11,7 +11,7 @@
 ### 环境要求
 
 - Python 3.6 - 3.9（不支持 3.10，因为 Ocr 库没有 3.10 的版本，以后如果有的话再适配）
-- NVIDIA CUDA（如果你要用 GPU 进行识别的话就要装，反正我是没配置好，而且虚拟机里面测试的时候 GPU 虚拟化没搞定）
+- NVIDIA CUDA（如果你要用 GPU 进行识别的话就要装，反正我是没配置好，而且虚拟机里面测试的时候 GPU 虚拟化没搞定）【CUDA 11.2：https://developer.download.nvidia.com/compute/cuda/11.2.1/local_installers/cuda_11.2.1_461.09_win10.exe | https://developer.nvidia.com/cuda-11.2.1-download-archive】
 
 ### 安装依赖
 
