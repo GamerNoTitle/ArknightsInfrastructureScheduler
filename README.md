@@ -10,8 +10,8 @@
 
 ### 环境要求
 
-- Python 3.6 - 3.9（不支持3.10，因为Ocr库没有3.10的版本，以后如果有的话再适配）
-- NVIDIA CUDA（如果你要用GPU进行识别的话就要装，反正我是没配置好，而且虚拟机里面测试的时候GPU虚拟化没搞定）
+- Python 3.6 - 3.9（不支持 3.10，因为 Ocr 库没有 3.10 的版本，以后如果有的话再适配）
+- NVIDIA CUDA（如果你要用 GPU 进行识别的话就要装，反正我是没配置好，而且虚拟机里面测试的时候 GPU 虚拟化没搞定）
 
 ### 安装依赖
 
@@ -31,37 +31,35 @@ python3 requirements.py [-h] [-g | -c] [--cuda {11.2,11.1,11.0,10.2,10.1}] [-e E
 
 > -h 显示帮助信息
 >
-> -g 使用GPU进行识别（不能与-c连用，且用了-g后一定要用--cuda指定CUDA版本，且要提前配置要CUDA并加入PATH）
+> -g 使用 GPU 进行识别（不能与-c 连用，且用了-g 后一定要用--cuda 指定 CUDA 版本，且要提前配置要 CUDA 并加入 PATH）
 >
-> -c 使用CPU进行识别（不能与-g连用）
+> -c 使用 CPU 进行识别（不能与-g 连用）
 >
-> --cuda 指定CUDA版本，只有使用GPU进行识别时有效
+> --cuda 指定 CUDA 版本，只有使用 GPU 进行识别时有效
 >
-> -e 指定python可执行文件的路径（因为我自己电脑是3.10，后来装了个3.9，所以就加了这个参数用来指定python3.9运行）
+> -e 指定 python 可执行文件的路径（因为我自己电脑是 3.10，后来装了个 3.9，所以就加了这个参数用来指定 python3.9 运行）
 
 #### 实例
 
-- 使用CPU进行识别
+- 使用 CPU 进行识别
 
 ```bash
 python requirements.py -c
 ```
 
-- 使用GPU进行识别，并且安装CUDA11.2
+- 使用 GPU 进行识别，并且安装 CUDA11.2
 
 ```bash
 python requirements.py -g --cuda 11.2
 ```
 
-- 使用GPU进行识别，并且安装CUDA11.0，使用特定路径下的python3.9
+- 使用 GPU 进行识别，并且安装 CUDA11.0，使用特定路径下的 python3.9
 
 ```bash
 python requirements.py -g --cuda 11.0 -e "C:\Users\GamerNoTitle\AppData\Local\Programs\Python\Python39\python.exe"
 ```
 
-安装完成依赖后，你可以运行`./utils/Ocr.py`来测试Ocr识别结果
-
-
+安装完成依赖后，你可以运行`./utils/Ocr.py`来测试 Ocr 识别结果
 
 ## Q&A
 
@@ -114,11 +112,13 @@ note: This is an issue with the package mentioned above, not pip.
 hint: See above for output from the failure.
 ```
 
-安装VS C++ Build Tools，因为这个安装比较麻烦，所以建议直接下载我这个
+安装 VS C++ Build Tools，因为这个安装比较麻烦，所以建议直接下载我这个
+
 ```
-链接：https://pan.baidu.com/s/1g5SEmiv2IQuZP5b5OJcjIw?pwd=ztyo 
+链接：https://pan.baidu.com/s/1g5SEmiv2IQuZP5b5OJcjIw?pwd=ztyo
 提取码：ztyo
 ```
+
 装载镜像后直接安装就好了。
 
 ## Credit
