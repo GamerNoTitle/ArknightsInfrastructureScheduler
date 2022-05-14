@@ -19,7 +19,7 @@ def Initalize(logger):
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36'})
         with zipfile.ZipFile('./adb/platform-tools-latest-windows.zip', 'r') as adbzip:
             adbzip.extractall(path='./adb')
-        os.system('rm -f "./adb/platform-tools-latest-windows.zip"')
+        os.system('del /q /f "./adb/platform-tools-latest-windows.zip"')
         logger.info('Adb for windows downloaded.')
     else:
         logger.info('Downloading adb for linux.')

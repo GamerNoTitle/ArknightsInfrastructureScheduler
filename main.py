@@ -1,8 +1,8 @@
 import os
-import threading as t
+import threading
 import json
 import time
-from pprint import pformat
+from pprint import pformat, pprint
 
 
 from utils.adb import device
@@ -29,9 +29,8 @@ if __name__ == '__main__':
     log_file = f'./logs/{t.tm_year}-{mo}-{day}-{hour}-{minute}.log'
     log = logger(config['log_level'].upper(), log_file) if config['log_level'].upper() in ['DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL'] else 'INFO'
     if not os.path.exists('./adb'):
-        DownloadProgress = t.Thread(target=Initalize, name='Initalize', arg=(log,))
+        DownloadProgress = threading.Thread(target=Initalize, name='Initalize', args=(log,))
         DownloadProgress.run()
-        DownloadProgress.join()
     temp_dir = 'cache'
 
     # Connect to the device
@@ -62,6 +61,9 @@ if __name__ == '__main__':
     # for i in result:
     #     time.sleep(5)
     #     device.touch(result_set = i)
-    tasks = [
-        Infrastructure.run(emulator, recongnize, temp_dir)
-    ]
+
+    # tasks = [
+    #     Infrastructure.run(emulator, recongnize, temp_dir)
+    # ]
+
+    pprint(result)

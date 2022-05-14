@@ -64,17 +64,18 @@ class device():
             raise RuntimeWarning('Cannot fetch device info.')
 
     def screencapture(self, temp_dir: str):
+        filename = f'{time.strftime("%Y%m%d%H%M%S")}.png'
         if sys.platform == 'win32':
             commands = f'''{adb} shell screencap -p /sdcard/temp.png
-            {adb} pull /sdcard/temp.png {temp_dir}\\{int(time.time())}.png
+            {adb} pull /sdcard/temp.png {temp_dir}\\{filename}.png
             {adb} shell rm /sdcard/temp.png'''
             for i in commands.split('\n'):
                 self.logger.info(os.popen(f'{i}').read())
-            return f'{temp_dir}\\{int(time.time())}.png'
+            return f'{temp_dir}\\{filename}.png'
         else:
             commands = f'''{adb} shell screencap -p /sdcard/temp.png
-            {adb} pull /sdcard/temp.png {temp_dir}/{int(time.time())}.png
+            {adb} pull /sdcard/temp.png {temp_dir}/{filename}.png
             {adb} shell rm /sdcard/temp.png'''
             for i in commands.split('\n'):
                 self.logger.info(os.popen(f'{i}').read())
-            return f'{temp_dir}/{int(time.time())}.png'
+            return f'{temp_dir}/{filename}.png'
