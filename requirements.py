@@ -11,6 +11,7 @@ parser.add_argument('--cuda', help='Specify CUDA version',
                     type=float, choices=[11.2, 11.1, 11.0, 10.2, 10.1])
 parser.add_argument('-e', '--execute',
                     help='Specify executable python program path', type=str)
+parser.add_argument('-i', '--index', help='Python index', type=str, default='https://pypi.tuna.tsinghua.edu.cn/simple')
 parser.parse_args()
 
 ver_major = sys.version_info.major
