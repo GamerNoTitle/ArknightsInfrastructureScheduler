@@ -19,15 +19,15 @@
 
 - Windows
 
-  ```bash
+```bash
 python requirements.py [-h] [-g | -c] [--cuda {11.2,11.1,11.0,10.2,10.1}] [-e EXECUTE]
-  ```
+```
 
 - Linux
 
-  ```bash
-  python3 requirements.py [-h] [-g | -c] [--cuda {11.2,11.1,11.0,10.2,10.1}] [-e EXECUTE]
-  ```
+```bash
+python3 requirements.py [-h] [-g | -c] [--cuda {11.2,11.1,11.0,10.2,10.1}] [-e EXECUTE]
+```
 
 > -h 显示帮助信息
 >
@@ -43,21 +43,21 @@ python requirements.py [-h] [-g | -c] [--cuda {11.2,11.1,11.0,10.2,10.1}] [-e EX
 
 - 使用CPU进行识别
 
-  ```bash
-  python requirements.py -c
-  ```
+```bash
+python requirements.py -c
+```
 
 - 使用GPU进行识别，并且安装CUDA11.2
 
-  ```bash
-  python requirements.py -g --cuda 11.2
-  ```
+```bash
+python requirements.py -g --cuda 11.2
+```
 
 - 使用GPU进行识别，并且安装CUDA11.0，使用特定路径下的python3.9
 
-  ```bash
-  python requirements.py -g --cuda 11.0 -e "C:\Users\GamerNoTitle\AppData\Local\Programs\Python\Python39\python.exe"
-  ```
+```bash
+python requirements.py -g --cuda 11.0 -e "C:\Users\GamerNoTitle\AppData\Local\Programs\Python\Python39\python.exe"
+```
 
 安装完成依赖后，你可以运行`./utils/Ocr.py`来测试Ocr识别结果
 
