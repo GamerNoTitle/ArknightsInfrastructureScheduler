@@ -65,8 +65,10 @@ if __name__ == '__main__':
     #     time.sleep(5)
     #     device.touch(result_set = i)
 
-    # tasks = [
-    #     Infrastructure.run(emulator, recongnize, temp_dir)
-    # ]
+    tasks = [
+        Infrastructure.run(emulator, recongnize, temp_dir, log)
+    ]
 
-    pprint(result)
+    # pprint(result)
+    for i in tasks:
+        eval(i)
