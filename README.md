@@ -6,6 +6,63 @@
 
 ![](https://gamernotitle.coding.net/p/assets/d/assets/git/raw/master/img/%23Miscellaneous/TIM-20220507-230435.png?download=true)
 
+## 快速开始
+
+### 环境要求
+
+- Python 3.6 - 3.9（不支持3.10，因为Ocr库没有3.10的版本，以后如果有的话再适配）
+- NVIDIA CUDA（如果你要用GPU进行识别的话就要装，反正我是没配置好，而且虚拟机里面测试的时候GPU虚拟化没搞定）
+
+### 安装依赖
+
+在本项目中，依赖并不是直接使用`pip install -r requirements.txt`就能完成的，取而代之的是你需要运行`requirements.py`文件，这个文件的运行方式如下，各参数将会在下面进行说明
+
+- Windows
+
+  ```bash
+python requirements.py [-h] [-g | -c] [--cuda {11.2,11.1,11.0,10.2,10.1}] [-e EXECUTE]
+  ```
+
+- Linux
+
+  ```bash
+  python3 requirements.py [-h] [-g | -c] [--cuda {11.2,11.1,11.0,10.2,10.1}] [-e EXECUTE]
+  ```
+
+> -h 显示帮助信息
+>
+> -g 使用GPU进行识别（不能与-c连用，且用了-g后一定要用--cuda指定CUDA版本，且要提前配置要CUDA并加入PATH）
+>
+> -c 使用CPU进行识别（不能与-g连用）
+>
+> --cuda 指定CUDA版本，只有使用GPU进行识别时有效
+>
+> -e 指定python可执行文件的路径（因为我自己电脑是3.10，后来装了个3.9，所以就加了这个参数用来指定python3.9运行）
+
+#### 实例
+
+- 使用CPU进行识别
+
+  ```bash
+  python requirements.py -c
+  ```
+
+- 使用GPU进行识别，并且安装CUDA11.2
+
+  ```bash
+  python requirements.py -g --cuda 11.2
+  ```
+
+- 使用GPU进行识别，并且安装CUDA11.0，使用特定路径下的python3.9
+
+  ```bash
+  python requirements.py -g --cuda 11.0 -e "C:\Users\GamerNoTitle\AppData\Local\Programs\Python\Python39\python.exe"
+  ```
+
+安装完成依赖后，你可以运行`./utils/Ocr.py`来测试Ocr识别结果
+
+
+
 ## Q&A
 
 ### 安装依赖时出错
