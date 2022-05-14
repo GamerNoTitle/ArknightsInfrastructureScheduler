@@ -53,7 +53,8 @@ if __name__ == '__main__':
 
     file = emulator.screencapture(temp_dir)
     try:
-        result = recongnize(file, log)
+        temp_filename = file.replace('\\','')
+        result = recongnize(temp_filename, log)
         log.info(result)
     except FileNotFoundError:
         log.warn('Could not find the screen captured picture.')
