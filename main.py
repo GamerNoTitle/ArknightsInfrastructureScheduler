@@ -55,7 +55,6 @@ if __name__ == '__main__':
     try:
         temp_filename = file.replace('\\','')
         result = recongnize(temp_filename, log)
-        log.info(result)
     except FileNotFoundError:
         log.warn('Could not find the screen captured picture.')
 
