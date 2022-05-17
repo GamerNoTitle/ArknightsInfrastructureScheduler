@@ -58,11 +58,11 @@ if sys.platform == 'win32':
                 f'{python} -m pip install paddlepaddle==2.2.2 -f https://www.paddlepaddle.org.cn/whl/{platform}/mkl/avx/stable.html')
 
 # Install Other Wheels
-if sys.platform == 'win32':
-    if args.execute:
-        os.system(f'{args.execute} -m pip install -r requirements.txt')
-    else:
-        os.system(f'{python} -m pip install -r requirements.txt')
+if args.execute:
+    os.system(f'{args.execute} -m pip install -r requirements.txt')
+else:
+    os.system(f'{python} -m pip install -r requirements.txt')
+    
 if args.gpu:
     print('Installation completed! After this installation, you still need to install cuda from NVIDIA website: https://developer.nvidia.com/cuda-downloads')
 else:
