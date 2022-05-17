@@ -124,6 +124,8 @@ hint: See above for output from the failure.
 
 装载镜像后直接安装就好了。
 
+或者你可以在这里直接下载轮子安装，注意要匹配自己的系统和Python版本https://www.lfd.uci.edu/~gohlke/pythonlibs/#python-levenshtein
+
 ## Credit
 
 - PaddleOcr https://paddlepaddle.org.cn
