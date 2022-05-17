@@ -11,7 +11,8 @@ parser.add_argument('--cuda', help='Specify CUDA version',
                     type=float, choices=[11.2, 11.1, 11.0, 10.2, 10.1])
 parser.add_argument('-e', '--execute',
                     help='Specify executable python program path', type=str)
-parser.add_argument('-i', '--index', help='Python index', type=str, default='https://pypi.tuna.tsinghua.edu.cn/simple')
+parser.add_argument('-i', '--index', help='Python index',
+                    type=str, default='https://pypi.tuna.tsinghua.edu.cn/simple')
 parser.parse_args()
 
 ver_major = sys.version_info.major
@@ -41,28 +42,27 @@ if args.cuda == None and args.gpu:
         'You must specify a CUDA version (11.2/11.1/11.0/10.2/10.1) when using GPU mode!')
 
 # Install wheel: paddlepaddle
-if sys.platform == 'win32':
-    if args.execute:
-        if args.gpu and args.cuda:
-            os.system(
-                f'{args.execute} -m pip install paddlepaddle-gpu=={CUDA_Version[args.cuda]} -f https://www.paddlepaddle.org.cn/whl/{platform}/mkl/avx/stable.html')
-        elif args.cpu:
-            os.system(
-                f'{args.execute} -m pip install paddlepaddle==2.2.2 -f https://www.paddlepaddle.org.cn/whl/{platform}/mkl/avx/stable.html')
-    else:
-        if args.gpu and args.cuda:
-            os.system(
-                f'{python} -m pip install paddlepaddle-gpu=={CUDA_Version[args.cuda]} -f https://www.paddlepaddle.org.cn/whl/{platform}/mkl/avx/stable.html')
-        elif args.cpu:
-            os.system(
-                f'{python} -m pip install paddlepaddle==2.2.2 -f https://www.paddlepaddle.org.cn/whl/{platform}/mkl/avx/stable.html')
+if args.execute:
+    if args.gpu and args.cuda:
+        os.system(
+            f'{args.execute} -m pip install paddlepaddle-gpu=={CUDA_Version[args.cuda]} -f https://www.paddlepaddle.org.cn/whl/{platform}/mkl/avx/stable.html')
+    elif args.cpu:
+        os.system(
+            f'{args.execute} -m pip install paddlepaddle==2.2.2 -f https://www.paddlepaddle.org.cn/whl/{platform}/mkl/avx/stable.html')
+else:
+    if args.gpu and args.cuda:
+        os.system(
+            f'{python} -m pip install paddlepaddle-gpu=={CUDA_Version[args.cuda]} -f https://www.paddlepaddle.org.cn/whl/{platform}/mkl/avx/stable.html')
+    elif args.cpu:
+        os.system(
+            f'{python} -m pip install paddlepaddle==2.2.2 -f https://www.paddlepaddle.org.cn/whl/{platform}/mkl/avx/stable.html')
 
 # Install Other Wheels
 if args.execute:
     os.system(f'{args.execute} -m pip install -r requirements.txt')
 else:
     os.system(f'{python} -m pip install -r requirements.txt')
-    
+
 if args.gpu:
     print('Installation completed! After this installation, you still need to install cuda from NVIDIA website: https://developer.nvidia.com/cuda-downloads')
 else:
