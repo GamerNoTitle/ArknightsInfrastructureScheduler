@@ -2,9 +2,13 @@
 
 ## 明日方舟排班换班助手
 
-为啥要做这个？因为群友的鞭策 ![](https://valinecdn.bili33.top/QQ/wunai.gif)
+为啥要做这个？因为有人在群里DD我 ![](https://valinecdn.bili33.top/QQ/wunai.gif)
 
 ![](https://gamernotitle.coding.net/p/assets/d/assets/git/raw/master/img/%23Miscellaneous/TIM-20220507-230435.png?download=true)
+
+## 你需要知道的
+
+这个项目说到底是个练手作，而且本来开发出来面向的对象就是群里人和自己，所以开发进度肯定会缓慢。Github中已经有很多成熟的项目，直接搜索`Arknights`就能够搜索到很多，这里推荐[MaaAssistantArknights/MaaAssistantArknights: 《明日方舟》小助手，自动刷图、智能基建换班，全日常一键长草！ (github.com)](https://github.com/MaaAssistantArknights/MaaAssistantArknights)
 
 ## 快速开始
 
